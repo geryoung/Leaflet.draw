@@ -1,17 +1,12 @@
-# Important 重要
+# Important
 Leaflet.draw 0.2.3+ requires [Leaflet 0.7](https://github.com/Leaflet/Leaflet/archive/v0.7.zip) or higher.
-Leaflet.draw 0.2.3+ 需要 [Leaflet 0.7](https://github.com/Leaflet/Leaflet/archive/v0.7.zip) 或者更高版本。
 
 #Leaflet.draw
 Adds support for drawing and editing vectors and markers on [Leaflet maps](https://github.com/Leaflet/Leaflet). Check out the [demo](http://leaflet.github.com/Leaflet.draw/).
-在 [Leaflet maps](https://github.com/Leaflet/Leaflet) 增加对绘制和编辑矢量和标记物的编辑 ，查看示例 [demo](http://leaflet.github.com/Leaflet.draw/).
 
 #### Upgrading from Leaflet.draw 0.1
 
 Leaflet.draw 0.2.0 changes a LOT of things from 0.1. Please see [BREAKING CHANGES](https://github.com/Leaflet/Leaflet.draw/blob/master/BREAKINGCHANGES.md) for how to upgrade.
-
-Leaflet.draw 0.2.0 与 0.1 相比变化来很多。 请查看 [BREAKING CHANGES](https://github.com/Leaflet/Leaflet.draw/blob/master/BREAKINGCHANGES.md) 来获取升级的方法。
-
 
 ## Table of Contents
 [Using the plugin](#using)  
@@ -19,13 +14,8 @@ Leaflet.draw 0.2.0 与 0.1 相比变化来很多。 请查看 [BREAKING CHANGES]
 [Common tasks](#commontasks)  
 [Thanks](#thanks)
 
-[使用插件](#using)  
-[高级选项](#options)  
-[常见功能](#commontasks)  
-[感谢](#thanks)
-
 <a name="using" />
-## Using the plugin 使用插件
+## Using the plugin
 
 The default state for the control is the draw toolbar just below the zoom control. This will allow map users to draw vectors and markers. **Please note the edit toolbar is not enabled by default.**
 

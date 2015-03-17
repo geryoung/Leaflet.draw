@@ -1,13 +1,16 @@
 翻译内容：
 
 
-| 英文 | 中文 |
-| - | - |
-| set the view |  |
-| draw toolbar | 绘图工具栏 |
-| control | 控件 |
-| view | 区域 |
-| Leaflet.draw plugin | 插件 |
+
+| 英文 | 中文 
+| -- | -- 
+| set the view |  
+| draw toolbar | 绘图工具栏 
+| marker | 标记 
+| control | 控件 
+| view | 区域 
+| Leaflet.draw plugin | 插件 
+
 
 
 
@@ -76,18 +79,16 @@ map.addControl(drawControl);
 The key here is the `featureGroup` option. This tells the plugin which `FeatureGroup` contains the layers that should be editable.
 
 ### 事件
-一旦成功将 Leaflet.draw 插件添加到地图上，我们会想要响应用户可以发起到动作。
-Once you have successfully added the Leaflet.draw plugin to your map you will want to respond to the different actions users can initiate. The following events will be triggered on the map:
+一旦成功将 Leaflet.draw 插件添加到地图上，我们会想要响应用户可以发起到动作。下面提到到事件将会在地图上被触发：
 
 #### draw:created
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
 | layer | [Polyline](http://leafletjs.com/reference.html#polyline)/[Polygon](http://leafletjs.com/reference.html#polygon)/[Rectangle](http://leafletjs.com/reference.html#rectangle)/[Circle](http://leafletjs.com/reference.html#circle)/[Marker](http://leafletjs.com/reference.html#marker) | Layer that was just created.
-| layerType | String | The type of layer this is. One of: `polyline`, `polygon`, `rectangle`, `circle`, `marker`
+| layerType | String | 这种类型的图层是  `polyline`, `polygon`, `rectangle`, `circle`, `marker` 其中的一种
 
-
-Triggered when a new vector or marker has been created.
+当一个新的矢量或标记被创建时。
 
 ````js
 map.on('draw:created', function (e) {
@@ -105,11 +106,11 @@ map.on('draw:created', function (e) {
 
 #### draw:edited
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| layers | [LayerGroup](http://leafletjs.com/reference.html#layergroup) | List of all layers just edited on the map.
+| layers | [LayerGroup](http://leafletjs.com/reference.html#layergroup) | 列出地图上所有被编辑的图层
 
-Triggered when layers in the FeatureGroup, initialised with the plugin, have been edited and saved.
+当图层在 FeatureGroup 中初始化或者被编辑或者被保存时触发。
 
 ````js
 map.on('draw:edited', function (e) {
@@ -122,81 +123,82 @@ map.on('draw:edited', function (e) {
 
 #### draw:deleted
 
-Triggered when layers have been removed (and saved) from the FeatureGroup.
+当图层在 FeatureGroup 被移除并被保存时触发。
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| layers | [LayerGroup](http://leafletjs.com/reference.html#layergroup) | List of all layers just removed from the map.
+| layers | [LayerGroup](http://leafletjs.com/reference.html#layergroup) | 列出所有被移除出地图当图层
 
 #### draw:drawstart
 
-Triggered when the user has chosen to draw a particular vector or marker.
+当用户开始新建一个矢量或者标记时触发。
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| layerType | String | The type of layer this is. One of: `polyline`, `polygon`, `rectangle`, `circle`, `marker`
+| layerType | String | 图层的类型是 `polyline`, `polygon`, `rectangle`, `circle`, `marker` 中的一种
 
 #### draw:drawstop
 
-Triggered when the user has finished a particular vector or marker.
+当用户完成新建一个矢量或者标记时触发
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| layerType | String | The type of layer this is. One of: `polyline`, `polygon`, `rectangle`, `circle`, `marker`
+| layerType | String | 图层的类型是 `polyline`, `polygon`, `rectangle`, `circle`, `marker` 中的一种
 
 #### draw:editstart
 
-Triggered when the user starts edit mode by clicking the edit tool button.
+当用户点击编辑工具按钮，开启编辑模式时启动。
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| handler | String | The type of edit this is. One of: `edit`
+| handler | String | 编辑的类型是 `edit`
 
 #### draw:editstop
 
-Triggered when the user has finshed editing (edit mode) and saves edits.
+当用户完成编辑并保存编辑时触发。
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| handler | String | The type of edit this is. One of: `edit`
+| handler | String | 编辑的类型是 `edit`
 
 #### draw:deletestart
 
-Triggered when the user starts remove mode by clicking the remove tool button.
+当用户通过点击移除工具按钮，开启移除模式。
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| handler | String | The type of edit this is. One of: `remove`
+| handler | String | 编辑的类型是 `remove`
 
 #### draw:deletestop
 
-Triggered when the user has finished removing shapes (remove mode) and saves.
+当用户完成移除并保存时触发
 
-| Property | Type | Description
+| Property | 类型 | 描述
 | --- | --- | ---
-| handler | String | The type of edit this is. One of: `remove`
+| handler | String | 编辑的类型是 `remove`
 
 <a name="options" />
-## Advanced options
+## 高级选项
 
-You can configure the plugin by using the different options listed here.
+可以通过下面列出的不同选项来配置。
 
 ### Control.Draw
 
-These options make up the root object that is used when initialising the Leaflet.draw control.
+下面这些选项组成了初始化 Leaflet.draw 控件根对象。
 
-| Option | Type | Default | Description
+| Option | 类型 | 默认值 | 描述
 | --- | --- | --- | ---
-| position | String | `'topleft'` | The initial position of the control (one of the map corners). See [control positions](http://leafletjs.com/reference.html#control-positions).
-| draw | [DrawOptions](#drawoptions) | `{}` | The options used to configure the draw toolbar.
-| edit | [EditOptions](#editoptions) | `false` | The options used to configure the edit toolbar.
+| position | String | `'topleft'` | 控件的初始位置（地图上的某一个角落） 请查阅控件位置 [control positions](http://leafletjs.com/reference.html#control-positions).
+| draw | [DrawOptions](#drawoptions) | `{}` | 配置绘图工具栏的选项.
+| edit | [EditOptions](#editoptions) | `false` | 配置编辑工具栏的选项.
 
 <a name="drawoptions" />
 ### DrawOptions
 
+这些选项允许你配置
 These options will allow you to configure the draw toolbar and its handlers.
 
-| Option | Type | Default | Description
+| Option | 类型 | 默认值 | 描述
 | --- | --- | --- | ---
 | polyline | [PolylineOptions](#polylineoptions) | `{ }` | Polyline draw handler options. Set to `false` to disable handler.
 | polygon | [PolygonOptions](#polygonoptions) | `{ }` | Polygon draw handler options. Set to `false` to disable handler.
@@ -206,6 +208,7 @@ These options will allow you to configure the draw toolbar and its handlers.
 
 ### Draw handler options
 
+以下的选项允许你配置单独的
 The following options will allow you to configure the individual draw handlers.
 
 <a name="polylineoptions" />
@@ -213,52 +216,52 @@ The following options will allow you to configure the individual draw handlers.
 
 Polyline and Polygon drawing handlers take the same options.
 
-| Option | Type | Default | Description
+| Option | 类型 | 默认值 | 描述
 | --- | --- | --- | ---
 | allowIntersection | Bool | `true` | Determines if line segments can cross.
 | drawError | Object | [See code](https://github.com/Leaflet/Leaflet.draw/blob/master/src/draw/handler/Draw.Polyline.js#L10) | Configuration options for the error that displays if an intersection is detected.
 | guidelineDistance | Number | `20` | Distance in pixels between each guide dash.
 | shapeOptions | [Leaflet Polyline options](http://leafletjs.com/reference.html#polyline-options) | [See code](https://github.com/Leaflet/Leaflet.draw/blob/master/src/draw/handler/Draw.Polyline.js#L20) | The options used when drawing the polyline/polygon on the map.
-| metric | Bool | `true` | Determines which measurement system (metric or imperial) is used.
+| metric | Bool | `true` | 确定使用哪种测量标准（公制的，英制的）.
 | zIndexOffset | Number | `2000` | This should be a high number to ensure that you can draw over all other layers on the map.
 | repeatMode | Bool | `false` | Determines if the draw tool remains enabled after drawing a shape.
 
 <a name="polygonoptions" />
-#### PolygonOptions
+#### PolygonOptions 多边形选项
 
-Polygon options include all of the Polyline options plus the option to show the approximate area.
+Polygon 选项包含所有 Polyline 选项，加上显示多边形面积的选项。
 
-| Option | Type | Default | Description
+| Option | 类型 | 默认值 | 描述
 | --- | --- | --- | ---
-| showArea | Bool | `false` | Show the area of the drawn polygon in m², ha or km². **The area is only approximate and become less accurate the larger the polygon is.**
+| showArea | Bool | `false` | 已显示 m², ha 或者 km² 单位来显示多边形的面积. **面积范围大小是粗略估计，并且多边形越大就会变得越不准确**
 
 <a name="rectangleoptions" />
-#### RectangleOptions
+#### RectangleOptions 矩形选项
 
-| Option | Type | Default | Description
+| Option | 类型 | 默认值 | 描述
 | --- | --- | --- | ---
 | shapeOptions | [Leaflet Path options](http://leafletjs.com/reference.html#path-options) | [See code](https://github.com/Leaflet/Leaflet.draw/blob/master/src/draw/handler/Draw.Rectangle.js#L7) | The options used when drawing the rectangle on the map.
 | repeatMode | Bool | `false` | Determines if the draw tool remains enabled after drawing a shape.
 
 <a name="circleoptions" />
-#### CircleOptions
+#### CircleOptions 圆形选项
 
-| Option | Type | Default | Description
+| Option | 类型 | 默认值 | 描述
 | --- | --- | --- | ---
 | shapeOptions | [Leaflet Path options](http://leafletjs.com/reference.html#path-options) | [See code](https://github.com/Leaflet/Leaflet.draw/blob/master/src/draw/handler/Draw.Circle.js#L7) | The options used when drawing the circle on the map. 
 | repeatMode | Bool | `false` | Determines if the draw tool remains enabled after drawing a shape.
 
 <a name="markeroptions" />
-#### MarkerOptions
+#### MarkerOptions 标记选项
 
-| Option | Type | Default | Description
+| Option | 类型 | 默认值 | 描述
 | --- | --- | --- | ---
 | icon | [Leaflet Icon](http://leafletjs.com/reference.html#icon) | `L.Icon.Default()` | The icon displayed when drawing a marker.
 | zIndexOffset | Number | `2000` | This should be a high number to ensure that you can draw over all other layers on the map.
 | repeatMode | Bool | `false` | Determines if the draw tool remains enabled after drawing a shape.
 
 <a name="editoptions" />
-### EditOptions
+### EditOptions 编辑选项
 
 These options will allow you to configure the draw toolbar and its handlers.
 
@@ -269,7 +272,7 @@ These options will allow you to configure the draw toolbar and its handlers.
 | remove | [DeleteHandlerOptions](#deletehandleroptions) | `{ }` | Delete handler options. Set to `false` to disable handler.
 
 <a name="edithandleroptions" />
-#### EditHandlerOptions
+#### EditHandlerOptions 处理编辑事件的选项
 
 | Option | Type | Default | Description
 | --- | --- | --- | ---
@@ -289,13 +292,13 @@ E.g. The edit options below will maintain the layer color and set the edit opaci
 ````
 
 <a name="deletehandleroptions" />
-#### DeleteHandlerOptions
+#### DeleteHandlerOptions 处理删除事件的选项
 
 | Option | Type | Default | Description
 | --- | --- | --- | ---
 
 <a name="drawlocal" />
-#### Customizing language and text in Leaflet.draw
+#### 定制 Leaflet.draw 上的语言和显示的文字
 
 Leaflet.draw uses the `L.drawLocal` configuration object to set any text used in the plugin. Customizing this will allow support for changing the text or supporting another language.
 
@@ -312,18 +315,18 @@ L.drawLocal.draw.handlers.rectangle.tooltip.start = 'Not telling...';
 ````
 
 <a name="commontasks" />
-## Common tasks
+## Common tasks 常见例子
 
-The following examples outline some common tasks.
+下面的示例概述一些常见的用法.
 
-### Example Leaflet.draw config
+### 配置 Leaflet.draw 示例
 
-The following example will show you how to:
+下面的例子将会告诉你，如何来：
 
-1. Change the position of the control's toolbar.
-2. Customize the styles of a vector layer.
-3. Use a custom marker.
-4. Disable the delete functionality.
+1. 改变控件工具栏的位置.
+2. 定制矢量图层的样式.
+3. 使用定制的图标进行标记.
+4. 禁用删除功能.
 
 ````js
 var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
@@ -392,7 +395,7 @@ map.on('draw:created', function (e) {
 });
 ````
 
-### Disabling a toolbar
+### 禁用一个工具栏
 
 If you do not want a particular toolbar in your app you can turn it off by setting the toolbar to false.
 
@@ -405,7 +408,7 @@ var drawControl = new L.Control.Draw({
 });
 ````
 
-### Disabling a toolbar item
+### 禁用工具栏的某一栏
 
 If you want to turn off a particular toolbar item, set it to false. The following disables drawing polygons and markers. It also turns off the ability to edit layers.
 
@@ -426,6 +429,7 @@ var drawControl = new L.Control.Draw({
 
 You can change a draw handlers options after initialisation by using the `setDrawingOptions` method on the Leaflet.draw control.
 
+例： 改变矩形框的颜色
 E.g. to change the colour of the rectangle:
 
 ````js
@@ -445,7 +449,7 @@ If you only require certain handlers (and not the UI), you may wish to create a 
 See [edit handlers example](https://github.com/Leaflet/Leaflet.draw/blob/master/examples/edithandlers.html) which uses only the edit handlers.
 
 <a name="thanks" />
-## Thanks
+## 感谢
 
 Thanks so much to [@brunob](https://github.com/brunob), [@tnightingale](https://github.com/tnightingale), and [@shramov](https://github.com/shramov). I got a lot of ideas from their Leaflet plugins.
 

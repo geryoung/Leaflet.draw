@@ -1,23 +1,28 @@
-# Important 重要
-Leaflet.draw 0.2.3+ requires [Leaflet 0.7](https://github.com/Leaflet/Leaflet/archive/v0.7.zip) or higher.
+翻译内容：
+
+
+| 英文 | 中文 |
+| - | - |
+| set the view |  |
+| draw toolbar | 绘图工具栏 |
+| control | 控件 |
+| view | 区域 |
+| Leaflet.draw plugin | 插件 |
+
+
+
+# 重要
 Leaflet.draw 0.2.3+ 需要 [Leaflet 0.7](https://github.com/Leaflet/Leaflet/archive/v0.7.zip) 或者更高版本。
 
 #Leaflet.draw
-Adds support for drawing and editing vectors and markers on [Leaflet maps](https://github.com/Leaflet/Leaflet). Check out the [demo](http://leaflet.github.com/Leaflet.draw/).
 在 [Leaflet maps](https://github.com/Leaflet/Leaflet) 增加对绘制和编辑矢量和标记物的编辑 ，查看示例 [demo](http://leaflet.github.com/Leaflet.draw/).
 
-#### Upgrading from Leaflet.draw 0.1
+#### 从 Leaflet.draw 0.1 升级
 
-Leaflet.draw 0.2.0 changes a LOT of things from 0.1. Please see [BREAKING CHANGES](https://github.com/Leaflet/Leaflet.draw/blob/master/BREAKINGCHANGES.md) for how to upgrade.
-
-Leaflet.draw 0.2.0 与 0.1 相比变化来很多。 请查看 [BREAKING CHANGES](https://github.com/Leaflet/Leaflet.draw/blob/master/BREAKINGCHANGES.md) 来获取升级的方法。
+Leaflet.draw 0.2.0 与 0.1 相比变化了很多。 请查看 [BREAKING CHANGES](https://github.com/Leaflet/Leaflet.draw/blob/master/BREAKINGCHANGES.md) 来获取升级的方法。
 
 
-## Table of Contents
-[Using the plugin](#using)  
-[Advanced Options](#options)  
-[Common tasks](#commontasks)  
-[Thanks](#thanks)
+## 主要内容
 
 [使用插件](#using)  
 [高级选项](#options)  
@@ -25,39 +30,40 @@ Leaflet.draw 0.2.0 与 0.1 相比变化来很多。 请查看 [BREAKING CHANGES]
 [感谢](#thanks)
 
 <a name="using" />
-## Using the plugin 使用插件
+## 使用插件
 
-The default state for the control is the draw toolbar just below the zoom control. This will allow map users to draw vectors and markers. **Please note the edit toolbar is not enabled by default.**
+绘图工具栏控件的默认状态是在缩放控件的下方. 绘图工具栏控件可以让用户绘制矢量，在地图上标记. **请注意：编辑工具栏默认是不开启的.**
 
-To add the draw toolbar set the option `drawControl: true` in the map options.
+通过设置地图选项的 `drawControl: true` 来将绘图工具栏添加到地图上。
 
 ````js
-// create a map in the "map" div, set the view to a given place and zoom
+// 在 "map" div 标签中创建一个地图，通过给定的位置和缩放来设置区域
+
 var map = L.map('map', {drawControl: true}).setView([51.505, -0.09], 13);
 
-// add an OpenStreetMap tile layer
+// 添加一层 OpenStreetMap 的瓦片层
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 ````
 
-### Adding the edit toolbar
-
-To use the edit toolbar you must initialise the Leaflet.draw control and manually add it to the map.
+### 添加编辑工具栏
+使用编辑控件前，必须初始化 Leaflet.draw 控件并手动添加到地图
 
 ````js
-// create a map in the "map" div, set the view to a given place and zoom
+// 在 "map" div 标签中创建一个地图，通过给定的位置和缩放来设置区域
 var map = L.map('map').setView([51.505, -0.09], 13);
 
-// add an OpenStreetMap tile layer
+// 添加一层 OpenStreetMap 的瓦片层
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Initialise the FeatureGroup to store editable layers
+//初始化 FeatureGroup 来存储可编辑到涂层
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
 
+//初始化 绘图控件并将它作为 FeatureGroup 到可编辑图层
 // Initialise the draw control and pass it the FeatureGroup of editable layers
 var drawControl = new L.Control.Draw({
 	edit: {
@@ -66,11 +72,11 @@ var drawControl = new L.Control.Draw({
 });
 map.addControl(drawControl);
 ````
-
+这里到关键点是 `featureGroup` 选项。这将告诉插件 `FeatureGroup` 包含的哪些图层应该被编辑。
 The key here is the `featureGroup` option. This tells the plugin which `FeatureGroup` contains the layers that should be editable.
 
-### Events
-
+### 事件
+一旦成功将 Leaflet.draw 插件添加到地图上，我们会想要响应用户可以发起到动作。
 Once you have successfully added the Leaflet.draw plugin to your map you will want to respond to the different actions users can initiate. The following events will be triggered on the map:
 
 #### draw:created
